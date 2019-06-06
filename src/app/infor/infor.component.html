@@ -1,0 +1,27 @@
+<h1 mat-dialog-title><b>TASK</b> ({{data.title}} - {{data.emp_id}})</h1>
+<div mat-dialog-content >
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.title" placeholder="Name Task*" readonly>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.emp_id" placeholder="Assignee Task*" readonly>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.id" placeholder="ID*" readonly>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-form-field>
+    <mat-label>Parent Task*</mat-label>
+    <mat-select  name="node" [(ngModel)]="parent_id" (selectionChange)="change()" (click)="change()" >
+      <mat-option >None</mat-option>
+      <mat-option *ngFor="let task of project" [value]="task.id">{{task.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<br>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn"  (click)="changeParent()"[mat-dialog-close]="data.level" cdkFocusInitial>Ok</button>
+  <button mat-raised-button color="warn"  (click)="Cancel()"[mat-dialog-close]="data.level" cdkFocusInitial>Cancel</button>
+</div>

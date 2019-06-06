@@ -1,0 +1,250 @@
+// variables
+$toolbarHeight: 64px;
+$nodeWidth: 60px;
+$nodeHeight: 50px;
+$completeColor: #2196F3;
+$incompleteColor: #9E9E9E;
+$borderColor: #BDBDBD;
+$highlightBorderColor: #FF9800;
+
+// sidenav
+.sidenav {
+  width: 350px;
+  height: fit-content;
+
+}
+
+// table content
+.sidenav-content {
+  height: fit-content;
+  overflow-x: auto;
+}
+
+// resizable border
+[mwlResizable] {
+  border-right: 3px solid $borderColor;
+  box-sizing: border-box;
+}
+
+// sidenav header(not calendar)
+.sidenav-header {
+  text-align: center;
+  line-height: $nodeHeight - 2px;
+  height: $nodeHeight - 2px;
+  min-height: $nodeHeight - 2px;
+  border-width: 1px 3px 1px 0;
+  border-color: $borderColor;
+  border-style: solid;
+}
+
+// tree node height for sidebar
+::ng-deep mat-tree-node {
+  height: $nodeHeight;
+  min-height: $nodeHeight;
+}
+
+.mat-tree {
+  display: block;
+}
+
+/** names */
+
+.sidenav.names {
+  mat-tree {
+    padding-top: 14px; // align the lines of input and table
+  }
+}
+
+/** date picker */
+
+.sidenav.date-pickers {
+  flex: 0 0 250px;
+
+  mat-tree.tree {
+    padding-top: 14px; // align the lines and table
+    border-width: 0 3px 0 0;
+    border-color: $borderColor;
+    border-style: solid;
+
+    mat-tree-node {
+      justify-content: center;
+
+      mat-form-field {
+        width: 100px;
+      }
+    }
+  }
+}
+
+// assignee
+.sidenav.assignee-bars {
+  flex: 0 0 100px;
+  width: 400px;
+
+  mat-tree.tree {
+    padding-top: 14px; // align the sliders and table
+    padding-left: 10px;
+    border-width: 0 3px 0 0;
+    border-color: $borderColor;
+    border-style: solid;
+    font-size: 60%;
+    width: 200px;
+  }
+}
+
+::ng-deep mat-form-field.assignee {
+  margin: 0 10px;
+  width: 100%;
+  height: unset;
+}
+
+// time 
+.sidenav.time {
+  flex: 0 0 100px;
+
+  mat-tree.tree {
+    padding-top: 14px; // align the lines and table
+    border-width: 0 3px 0 0;
+    border-color: $borderColor;
+    border-style: solid;
+
+    mat-tree-node {
+      justify-content: center;
+
+      mat-form-field {
+        width: 50px;
+      }
+    }
+  }
+}
+
+/** estimate */
+.sidenav.estimate-bars {
+  flex: 0 0 120px;
+  width: 50px;
+
+  mat-tree.tree {
+    padding-top: 14px; // align the sliders and table
+    padding-left: 5px;
+    border-width: 0 3px 0 0;
+    border-color: $borderColor;
+    border-style: solid;
+    text-align: center;
+  }
+}
+
+::ng-deep mat-form-field.estimate {
+  margin: 0 10px;
+  width: 80%;
+  height: unset;
+}
+
+
+/** duration */
+
+.sidenav.progress-bars {
+  flex: 0 0 200px;
+
+  mat-tree.tree {
+    padding-top: 8px; // align the sliders and table
+    border-width: 0 3px 0 0;
+    border-color: $borderColor;
+    border-style: solid;
+  }
+}
+
+::ng-deep mat-slider.progress {
+  margin: 0 10px;
+  width: 100%;
+  height: unset;
+}
+
+/** calendar */
+
+// header
+::ng-deep .calendar-header {
+  height: $nodeHeight;
+  min-height: $nodeHeight;
+}
+
+// row
+::ng-deep mat-tree-node.calendar-row {
+  overflow: unset; // allow the row to overflow
+}
+
+// cell
+::ng-deep .calendar-cell {
+  text-align: center;
+  line-height: $nodeHeight - 1px;
+  width: $nodeWidth + 1000px;
+  height: $nodeHeight - 1px;
+  min-width: $nodeWidth - 2px;
+  min-height: $nodeHeight - 1px;
+  border-width: 0.5px 1px;
+  border-color: $borderColor;
+  border-style: solid;
+}
+
+::ng-deep .calendar-cell.today {
+  border-color: $highlightBorderColor;
+  border-width: 0.5px 5px;
+}
+
+// completed cell
+::ng-deep .calendar-cell[date-filled=true][date-inside=true] {
+  background-color: $completeColor;
+}
+
+// incompleted cell
+::ng-deep .calendar-cell[date-inside=true] {
+  background-color: forestgreen;
+}
+
+
+::ng-deep .mat-form-field-flex {
+  height: 0 !important;
+}
+
+.mycalss1 {
+  height: 100%;
+  display: none !important;
+}
+.myclass[projectdays=true]{
+  background-color: sienna;
+}
+
+.myclass:hover .mycalss1[date-inside=true] {
+  //display: block !important;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex !important;
+  place-content: center space-between;
+  align-items: center;
+ 
+}
+.myleft {
+  cursor: pointer !important;
+}
+.mycenter{
+  display: none!important;
+
+}
+.myclass:hover .mycenter[date-outsite=true]{
+  display: inline !important;
+  cursor: pointer!important;
+}
+
+.myright {
+  cursor: pointer!important;
+}
+
+
+::ng-deep .mat-tooltip{
+    background-color: springgreen;
+    font-size: 20px;
+    height: 190px;
+    width: 190px;
+    white-space: pre-line;
+    color: blue !important;
+ 
+}

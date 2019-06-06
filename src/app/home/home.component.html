@@ -1,0 +1,37 @@
+<div class="container" fxLayout="column">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>
+        <button mat-raised-button color="warn" (click)="createChart()">
+          <mat-icon>add</mat-icon>
+          New Project
+        </button>
+      </span>
+      <span fxFlex></span>
+      <span>Angular Gantt Chart</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div fxFlex fxLayout="row wrap" fxLayoutAlign="start start">
+    <!-- cards -->
+    <div *ngFor="let chart of charts; let i = index" fxFlex.lt-md="100" fxFlex.md="50" fxFlex.gt-md="33">
+      <mat-card [ngStyle]="{'margin': '20px'}">
+        <mat-card-header>
+          <mat-card-title>{{chart.title}}</mat-card-title>
+          <mat-card-subtitle>{{chart.plan_start_date}} - {{chart.plan_end_date}}</mat-card-subtitle>
+          <!-- <mat-card-subtitle>Duration: {{chart.duration}} days</mat-card-subtitle> -->
+        </mat-card-header>
+        <hr>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="center start">
+          <a mat-raised-button color="primary" [routerLink]="['/charts/'+i]">
+            <mat-icon>edit</mat-icon>
+            Update
+          </a>
+          <button mat-raised-button color="accent" (click)="deleteChart(i)">
+            <mat-icon>delete</mat-icon>
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
